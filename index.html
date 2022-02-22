@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Card Tilt Example</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="demo-section">
+      <section class="demo-controls">
+        <div class="flex-container">
+          <h5>Max deflection of card</h5>
+          <input
+            type="range"
+            value="10"
+            min="1"
+            max="20"
+            id="tiltDegreeControl"
+          />
+        </div>
+        <div class="flex-container">
+          <h5>Zoom-in on mouse hover</h5>
+          <div class="switch" id="hover-switch">
+            <div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="demo-card"></section>
+    </section>
+
+    <section class="code-sample-section">
+      <h3>Code sample</h3>
+      <br />
+      <h4>HTML</h4>
+      <br />
+      <div class="code-container">
+        <code>
+          <pre id="html-code"></pre>
+        </code>
+      </div>
+
+      <br />
+
+      <h4>CSS</h4>
+      <br />
+      <div class="code-container">
+        <code>
+          <pre id="css-code"></pre>
+        </code>
+      </div>
+
+      <br />
+
+      <h4>Javascript</h4>
+      <br />
+      <div class="code-container">
+        <code>
+          <pre id="js-code"></pre>
+        </code>
+      </div>
+    </section>
+
+    <script src="index.js" type="module"></script>
+  </body>
+</html>
