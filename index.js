@@ -5,8 +5,8 @@ function returnModifyCodeAndRenderIt() {
     return `import ParallaxTilt from './Tilt.js';
 
 // Your target card
-const target = document.getElementById('target');
-
+const target = document.getElementById('target-card');
+                                                                    
 new ParallaxTilt(target, {
   maxDeflection: ${maxDeflection},
   scaleOnHover: ${scaleOnHover}, // Apply your respective scaling value here
@@ -27,12 +27,24 @@ new ParallaxTilt(target, {
 
         const contentText = document.createElement('div');
 
-        contentText.innerText = `This random text is added for providing user interface for showcasing
-    the viewers a platform to test the functionality.
-    
-    
-    Hover over this card over various points using your mouse to test the
-    tilt effect.`;
+        contentText.appendChild(
+          document.createTextNode(
+            'This random text is added for providing user interface for showcasing the viewers a platform to test the functionality.'
+          )
+        );
+
+        contentText.appendChild(document.createElement('br'));
+        contentText.appendChild(document.createElement('br'));
+
+        const cardHighLightedText = document.createElement('span');
+        cardHighLightedText.innerText = 'Hover over this card';
+        contentText.appendChild(cardHighLightedText);
+
+        contentText.appendChild(
+          document.createTextNode(
+            ' over various points using your mouse to test the tilt effect.'
+          )
+        );
 
         const btn = document.createElement('button');
         btn.className = 'button';
@@ -49,43 +61,6 @@ new ParallaxTilt(target, {
   // Setting sample code in UI
   return (function () {
     const jsCode = document.getElementById('js-code');
-
-    document.getElementById(
-      'html-code'
-    ).innerText = `<div class="card" id="target">
-  <div>
-    This random text is added for providing user interface for showcasing
-    the viewers a platform to test the functionality.
-    <br/>
-    <br/>
-    Hover over this card over various points using your mouse to test the
-    tilt effect.
-  </div>
-  <button class="button">Button</button>
-</div>`;
-
-    document.getElementById('css-code').innerText = `.card {
-  display: inline-block;
-  height: auto;
-  width: 30vh;
-  max-width: 26ch;
-  border: 1px solid white;
-  border-radius: 5px;
-  color: white;
-  padding: 20px;
-  text-align: center;
-}
-
-.button {
-  display: inline-block;
-  background-color: transparent;
-  color: white;
-  border: 1px solid white;
-  border-radius: 3px;
-  margin: 5vh 0 1vh;
-  width: 100%;
-  padding: 2vh 0;
-}`;
 
     return function (tiltProps) {
       jsCode.innerText = computeJavascriptCode(tiltProps);

@@ -8,58 +8,38 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <section class="demo-section">
-      <section class="demo-controls">
-        <div class="flex-container">
-          <h5>Max deflection of card</h5>
-          <input
-            type="range"
-            value="10"
-            min="1"
-            max="20"
-            id="tiltDegreeControl"
-          />
+    <section class="demo-controls">
+      <div class="flex-container">
+        <h4>Max deflection of card</h4>
+        <input
+          type="range"
+          value="10"
+          min="1"
+          max="20"
+          id="tiltDegreeControl"
+        />
+      </div>
+      <div class="flex-container">
+        <h4>Zoom-in on mouse hover</h4>
+        <div class="switch" id="hover-switch">
+          <div></div>
         </div>
-        <div class="flex-container">
-          <h5>Zoom-in on mouse hover</h5>
-          <div class="switch" id="hover-switch">
-            <div></div>
-          </div>
-        </div>
-      </section>
-
-      <section class="demo-card"></section>
+      </div>
     </section>
 
+    <section class="demo-card"></section>
+
     <section class="code-sample-section">
-      <h3>Code sample</h3>
-      <br />
-      <h4>HTML</h4>
-      <br />
       <div class="code-container">
-        <code>
-          <pre id="html-code"></pre>
-        </code>
-      </div>
-
-      <br />
-
-      <h4>CSS</h4>
-      <br />
-      <div class="code-container">
-        <code>
-          <pre id="css-code"></pre>
-        </code>
-      </div>
-
-      <br />
-
-      <h4>Javascript</h4>
-      <br />
-      <div class="code-container">
-        <code>
-          <pre id="js-code"></pre>
-        </code>
+        <h3>Code sample</h3>
+        <h4>HTML</h4>
+        <pre class="code-text">
+&lt;div id="target-card"&gt;
+  ...
+&lt;/div&gt;</pre
+        >
+        <h4>Javascript</h4>
+        <pre class="code-text scroll" id="js-code"></pre>
       </div>
     </section>
 
