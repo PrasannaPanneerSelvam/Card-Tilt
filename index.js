@@ -59,16 +59,14 @@ new ParallaxTilt(target, {
   }
 
   // Setting sample code in UI
-  return (function () {
-    const jsCode = document.getElementById('js-code');
-
-    return function (tiltProps) {
-      jsCode.innerText = computeJavascriptCode(tiltProps);
-      cleanAndCreateDemoCard();
-      const target = document.getElementById('target');
-      new ParallaxTilt(target, tiltProps);
-    };
-  })();
+  return function (tiltProps) {
+    const { maxDeflection, scaleOnHover } = tiltProps;
+    document.getElementById('scaleOnBoolean').innerText = scaleOnHover;
+    document.getElementById('maxDeflection').innerText = maxDeflection;
+    cleanAndCreateDemoCard();
+    const target = document.getElementById('target');
+    new ParallaxTilt(target, tiltProps);
+  };
 }
 
 window.onload = function () {

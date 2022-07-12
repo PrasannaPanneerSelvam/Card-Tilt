@@ -33,13 +33,66 @@
       <div class="code-container">
         <h3>Code sample</h3>
         <h4>HTML</h4>
-        <pre class="code-text">
-&lt;div id="target-card"&gt;
-  ...
-&lt;/div&gt;</pre
-        >
+
+        <div class="code-text" id="html-code-sample">
+          <div>
+            <span class="tag">&lt;div&nbsp;&nbsp;</span
+            ><span class="fn">id</span><span class="nt">=</span
+            ><span class="str">"target-card"&nbsp;</span
+            ><span class="tag">&gt;</span>
+          </div>
+          <div><span class="nt">...</span></div>
+          <div><span class="tag">&lt;/div&gt;</span></div>
+        </div>
+
         <h4>Javascript</h4>
-        <pre class="code-text scroll" id="js-code"></pre>
+
+        <div class="code-text scroll" id="js-code">
+          <div>
+            <span class="kw">import&nbsp;&nbsp;</span
+            ><span class="var">ParallaxTilt&nbsp;&nbsp;</span
+            ><span class="kw">from&nbsp;&nbsp;</span
+            ><span class="str">'./Tilt.js'&nbsp;</span
+            ><span class="var">;</span>
+          </div>
+          <br />
+          <div><span class="cmt">// Your target card</span></div>
+          <div>
+            <span class="kw">const&nbsp;&nbsp;</span
+            ><span class="var">target&nbsp;&nbsp;</span
+            ><span class="kw">=&nbsp;&nbsp;</span
+            ><span class="var">document</span><span class="kw">.</span
+            ><span class="fn">getElementById</span
+            ><span class="var">(&nbsp;</span
+            ><span class="str">'target-card'</span
+            ><span class="var">&nbsp;)</span><span class="var">;</span
+            ><span class="var"
+              >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span
+            >
+          </div>
+          <br />
+          <div>
+            <span class="kw">new&nbsp;&nbsp;</span
+            ><span class="fn">ParallaxTilt&nbsp;</span
+            ><span class="var">(&nbsp;target&nbsp;, {</span>
+          </div>
+          <div>
+            <span class="var"
+              >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maxDeflection&nbsp;:&nbsp;&nbsp;</span
+            ><span class="cns" id="maxDeflection">10</span
+            ><span class="var">,</span>
+          </div>
+          <div>
+            <span class="var"
+              >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scaleOnHover&nbsp;:&nbsp;&nbsp;</span
+            ><span class="cns" id="scaleOnBoolean">1</span
+            ><span class="var">,</span
+            ><span class="cmt"
+              >&nbsp;&nbsp;// Apply your respective scaling value here</span
+            >
+          </div>
+          <span class="var">}&nbsp;);</span>
+        </div>
       </div>
     </section>
 
