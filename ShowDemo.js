@@ -91,7 +91,6 @@ class ShowDemo {
     this.presetValues = { maxDeflection, scaleOnHover };
 
     const cardBody = this.#cardBody,
-      points = this.#points,
       delayTiming = 100;
 
     cardBody.style.setProperty('--scale-value', `${scaleOnHover}`);
@@ -103,22 +102,19 @@ class ShowDemo {
 
     this.stopOngoingDemo();
 
-    points.forEach((point, idx) => {
+    this.#points.forEach((_, idx) => {
       this.demoTimeOuts.push(
-        setTimeout(
-          function () {
-            const { maxDeflection } = this.presetValues;
-            tilt.call(cardBody, point, maxDeflection);
-            // End of the demo
-            if (idx == points.length - 1) {
-              // Resetting to default values
-              setCardAngles.call(cardBody, 0, 0);
-              cardBody.style.setProperty('--scale-value', '1');
-              this.demoTimeOuts = [];
-            }
-          }.bind(this),
-          delayTiming * idx
-        )
+        setTimeout(() => {
+          const { maxDeflection } = this.presetValues;
+          tilt.call(cardBody, this.#points[idx], maxDeflection);
+          // End of the demo
+          if (idx == this.#points.length - 1) {
+            // Resetting to default values
+            setCardAngles.call(cardBody, 0, 0);
+            cardBody.style.setProperty('--scale-value', '1');
+            this.demoTimeOuts = [];
+          }
+        }, delayTiming * idx)
       );
     }, this);
   }
