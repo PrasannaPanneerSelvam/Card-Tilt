@@ -40,13 +40,16 @@ class ParallaxTilt {
     for (const [key, value] of Object.entries(options))
       presetOptions[key] = value ?? presetOptions[key];
 
-    this.setView(element, presetOptions);
+    this.cardBody = element;
+    this.presetOptions = presetOptions;
+    this.eventListeners = {};
+    this.setView();
   }
 
-  setView(
-    cardBody,
-    { maxDeflection, childrenProjectionDistance, scaleOnHover }
-  ) {
+  setView() {
+    const cardBody = this.cardBody,
+      { maxDeflection, childrenProjectionDistance, scaleOnHover } =
+        this.presetOptions;
     const transformProps = [
       'perspective(1000px)',
       'rotateY(var(--horizontal-angle, 0))',
@@ -78,28 +81,70 @@ class ParallaxTilt {
       ] = `translateZ(${childrenProjectionDistance})`;
     }
 
-    // Mounting mouse events for tilt effects
-    cardBody.addEventListener('mousemove', function (event) {
+    // Mouse events for Tilt effects
+    this.eventListeners.mouseMove = function (event) {
       event.stopPropagation();
       tilt.call(this, event, { maxDeflection });
-    });
+    };
 
-    cardBody.addEventListener('mouseleave', function (event) {
+    this.eventListeners.mouseLeave = function (event) {
       event.stopPropagation();
       setCardAngles.call(this, 0, 0);
-    });
+    };
+
+    const cssStyleObj = cardBody.style;
+
+    this.eventListeners.mouseEnter = function () {
+      cssStyleObj.setProperty('--scale-value', `${scaleOnHover}`);
+    };
+
+    this.eventListeners.mouseLeaveOnHover = function () {
+      cssStyleObj.setProperty('--scale-value', '1');
+    };
+
+    // Mounting mouse events for tilt effects
+    cardBody.addEventListener('mousemove', this.eventListeners.mouseMove);
+    cardBody.addEventListener('mouseleave', this.eventListeners.mouseLeave);
 
     if (scaleOnHover !== 1) {
-      const cssStyleObj = cardBody.style;
-
-      cardBody.addEventListener('mouseenter', () => {
-        cssStyleObj.setProperty('--scale-value', `${scaleOnHover}`);
-      });
-
-      cardBody.addEventListener('mouseleave', function (event) {
-        cssStyleObj.setProperty('--scale-value', '1');
-      });
+      cardBody.addEventListener('mouseenter', this.eventListeners.mouseEnter);
+      cardBody.addEventListener(
+        'mouseleave',
+        this.eventListeners.mouseLeaveOnHover
+      );
     }
+  }
+
+  removeListeners() {
+
+    // De-mounting listeners
+    const cardBody = this.cardBody;
+    cardBody.removeEventListener('mousemove', this.eventListeners.mouseMove);
+    cardBody.removeEventListener('mouseleave', this.eventListeners.mouseLeave);
+
+    if (this.presetOptions.scaleOnHover !== 1) {
+      cardBody.removeEventListener(
+        'mouseenter',
+        this.eventListeners.mouseEnter
+      );
+      cardBody.removeEventListener(
+        'mouseleave',
+        this.eventListeners.mouseLeaveOnHover
+      );
+    }
+
+    // Resetting event listeners object
+    this.eventListeners = {};
+  }
+
+  updateProps(options = {}) {
+    this.removeListeners();
+
+    // Updating options
+    for (const [key, value] of Object.entries(options))
+      this.presetOptions[key] = value ?? this.presetOptions[key];
+
+    this.setView();
   }
 }
 
