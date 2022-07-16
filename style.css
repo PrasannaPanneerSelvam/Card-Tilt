@@ -77,6 +77,13 @@ pre {
   overflow-x: scroll;
 }
 
+.code-text.scroll > div {
+  display: inline-block;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+
 .demo-controls {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -107,6 +114,7 @@ span {
   height: auto;
   width: 30vw;
   max-width: 26ch;
+  min-width: 20ch;
   border: 1px solid #ffffff;
   border-radius: 5px;
   color: #ffffff;
